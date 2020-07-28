@@ -22,9 +22,6 @@ node_modules
 # Yarn error logs
 yarn-error.log
 
-# Generated CSS files
-public/static/css
-
 # Development Environment file
 .env.development
 
