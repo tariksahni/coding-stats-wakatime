@@ -1,0 +1,11 @@
+{
+  "name": "coding-stats-wakatime",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:tariksahni/coding-stats-wakatime.git",
+  "author": "Tarik <tariksahni@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.19.2"
+  }
+}
