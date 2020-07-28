@@ -1,5 +1,32 @@
-# dependencies
+# .DS_Store files for mac
+.DS_Store
+
+# IDEA(WebStorm) files for desktop app
+.idea/
+
+# Visual studio files
+.vscode/
+
+# npm Debug Logs for desktop app
+npm-debug.log*
+
+# Dependency directories for desktop app
 node_modules
 
-# Web editor
-.idea
+# Build files
+.next
+
+# Vercel deployment files
+.vercel
+
+# Yarn error logs
+yarn-error.log
+
+# Generated CSS files
+public/static/css
+
+# Development Environment file
+.env.development
+
+# Lighthouse report files
+.lighthouseci
