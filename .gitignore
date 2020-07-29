@@ -27,3 +27,6 @@ yarn-error.log
 
 # Lighthouse report files
 .lighthouseci
+
+.env
+.env.*
