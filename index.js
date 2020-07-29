@@ -1,8 +1,7 @@
-/* Node Modules */
-import axios from 'axios';
+/* Utilities */
+import fetchStatsData from './src/utils/fetchStatsData';
+import generateStatsSVG from './src/generateStatsSVG';
 
-/* Constants */
-import {WAKA_TIME_API_URL} from './static/url';
-
-
+fetchStatsData();
+generateStatsSVG();
 
