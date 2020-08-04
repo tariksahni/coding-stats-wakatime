@@ -14,7 +14,7 @@ const generateStatsSVG  = (statsResponse) => {
     const margin = 20;
     const width = (numberOfSamples * 125) - 2 * margin;
     const height = 300 - 2 * margin;
-
+    svg.attr('width', (numberOfSamples * 125)).attr('height', 315);
     // Set the margins
     const chart = svg.append('g')
         .attr('transform', `translate(${margin}, ${margin})`);
