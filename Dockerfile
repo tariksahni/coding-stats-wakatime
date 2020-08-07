@@ -14,7 +14,7 @@ RUN apt-get install -y nodejs
 
 RUN npm install -g yarn
 RUN yarn install
-CMD yarn start
+RUN yarn start
 
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
