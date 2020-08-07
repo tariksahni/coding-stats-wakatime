@@ -1,0 +1,16 @@
+name: 'Coding statistics graph on Github profile Readme'
+author: Tarik Sahni
+description: 'Generate and regularly update your coding stats which you can embed on your github profile README.md'
+
+inputs:
+  WAKATIME_API_KEY:
+    description: 'WakaTime API Key'
+    required: true
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+
+branding:
+  icon: 'activity'
+  color: 'green'
