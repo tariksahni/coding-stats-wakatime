@@ -2,6 +2,7 @@ FROM debian:9.5-slim
 
 MAINTAINER Tarik "tariksahni@gmail.com"
 
+ADD . .
 COPY package.json .
 COPY yarn.lock .
 
