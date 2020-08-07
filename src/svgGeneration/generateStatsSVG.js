@@ -75,7 +75,7 @@ const generateStatsSVG  = (statsResponse) => {
         .attr("y", function(d) { return yAxis(d.value) - 20; })
         .text(function(d) { return d.label; });
 
-
+    console.log("Done graph");
     fs.writeFileSync('images/codeStats.svg', body.html());
 };
 
