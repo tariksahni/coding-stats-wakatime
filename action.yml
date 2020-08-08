@@ -6,6 +6,9 @@ inputs:
   WAKATIME_API_KEY:
     description: 'WakaTime API Key'
     required: true
+  CHECK:
+    description: 'Check'
+    required: true
 
 runs:
   using: 'docker'
