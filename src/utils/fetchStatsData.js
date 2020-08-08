@@ -5,7 +5,7 @@ import generateStatsSVG from '../svgGeneration/generateStatsSVG';
 
 const fetchStatsData = () => {
     const API_KEY = core.getInput('WAKATIME_API_KEY');
-    console.log("check", API_KEY);
+    console.log("check", API_KEY, core.getInput('CHECK'));
     axios.get(WAKA_TIME_API_URL(API_KEY)).then((response) => {
         generateStatsSVG(response.data);
     });
