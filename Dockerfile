@@ -17,6 +17,5 @@ RUN apt-get install -y git nodejs
 
 RUN npm install -g yarn
 RUN yarn install
-RUN yarn start
 
 ENTRYPOINT ["/entrypoint.sh"]
