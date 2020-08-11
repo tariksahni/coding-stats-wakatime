@@ -6,8 +6,9 @@ inputs:
   WAKATIME_API_KEY:
     description: 'WakaTime API Key'
     required: true
-  CHECK:
-    description: 'Check'
+
+  REPO_TOKEN:
+    description: 'Github token of the repo for the authentication'
     required: true
 
 runs:

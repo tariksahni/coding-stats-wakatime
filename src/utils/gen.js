@@ -1,4 +1,4 @@
-export const getDesiredStats = (statsDataResponse) => {
+const getDesiredStats = (statsDataResponse) => {
     const statsData = [];
     statsDataResponse.data.languages.map(({name, digital, text}) => {
         if(digital !== '0:00' && name !== 'Other') {
@@ -12,3 +12,7 @@ export const getDesiredStats = (statsDataResponse) => {
     });
     return statsData;
 };
+
+export {
+    getDesiredStats
+}

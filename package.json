@@ -13,13 +13,16 @@
     "axios": "^0.19.2",
     "d3": "^5.16.0",
     "esm": "^3.2.25",
-    "jsdom": "^16.3.0"
+    "fs": "^0.0.1-security",
+    "globby": "^11.0.1",
+    "jsdom": "^16.3.0",
+    "path": "^0.12.7"
   },
   "engines": {
     "node": ">=12.0.0"
   },
   "type": "module",
   "devDependencies": {
-    "@actions/core": "^1.2.4"
+    "@octokit/rest": "^18.0.3"
   }
 }
