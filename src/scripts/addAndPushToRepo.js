@@ -1,7 +1,8 @@
 import { Octokit } from '@octokit/rest';
+import { createActionAuth } from "@octokit/auth-action";
 import glob from 'globby';
 import path from 'path';
-import { readFileSync } from 'fs';
+import { readFile } from 'fs-extra';
 
 // const [owner, repo] = process.env.GITHUB_REPOSITORY.split("/");
 const owner = 'tariksahni';
@@ -31,13 +32,13 @@ const getCurrentCommit = async (
 };
 
 // Notice that readFile's utf8 is typed differently from Github's utf-8
-const getFileAsUTF8 = (filePath) => readFileSync(filePath, {encoding:'utf8'});
+const getFileAsUTF8 = (filePath) => readFile(filePath, 'utf8');
 
 const createBlobForFile = (octo, owner, repo) => async (
     filePath
 ) => {
     const content = await getFileAsUTF8(filePath);
-    console.log("aaua", content);
+    console.log("aaua", owner, repo, octo.git.createBlob);
     const blobData = await octo.git.createBlob({
         owner,
         repo,
@@ -137,8 +138,10 @@ const uploadToRepo = async (
 };
 
 const addAndPushToRepo = async () => {
+    const auth = createActionAuth();
+    const { token } = await auth();
     const octokit = new Octokit({
-        auth: process.env.REPO_TOKEN
+        auth: token
     });
     await uploadToRepo(octokit, './src/static/images', owner, repo);
 };
