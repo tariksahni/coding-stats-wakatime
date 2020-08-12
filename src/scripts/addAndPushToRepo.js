@@ -57,20 +57,21 @@ const createNewTree = async (
     paths,
     parentTreeSha
 ) => {
-    // My custom config. Could be taken as parameters
     const tree = blobs.map(({ sha }, index) => ({
         path: paths[index],
         mode: `100644`,
         type: `blob`,
         sha,
     }));
-    const { data } = await octo.git.createTree({
+    console.log("tree object", tree);
+    const responseFromCreateTree = await octo.git.createTree({
         owner,
         repo,
         tree,
         base_tree: parentTreeSha,
     });
-    return data
+    console.log("responseFromCreateTree", responseFromCreateTree);
+    return responseFromCreateTree.data
 };
 
 const createNewCommit = async (
@@ -111,12 +112,11 @@ const uploadToRepo = async (
     branch = 'master'
 ) => {
     const currentCommit = await getCurrentCommit(octo, owner, repo, branch);
-    console.log("current", currentCommit);
     const filesPaths = await glob(imagePath);
-    console.log("filesPaths", filesPaths, imagePath);
     const filesBlobs = await Promise.all(filesPaths.map(createBlobForFile(octo, owner, repo)));
-    console.log("filesPath123", filesBlobs);
+    console.log("filesBlobs", filesBlobs);
     const pathsForBlobs = filesPaths.map(fullPath => path.relative(imagePath, fullPath));
+    console.log("pathsForBlobs", pathsForBlobs, currentCommit);
     const newTree = await createNewTree(
         octo,
         owner,
@@ -125,6 +125,7 @@ const uploadToRepo = async (
         pathsForBlobs,
         currentCommit.treeSha
     );
+    console.log("aaya", newTree);
     const commitMessage = 'Updated your coding stats :rocket: ';
     const newCommit = await createNewCommit(
         octo,
@@ -134,6 +135,7 @@ const uploadToRepo = async (
         newTree.sha,
         currentCommit.commitSha
     );
+    console.log("new commit", newCommit);
     await setBranchToCommit(octo, owner, repo, branch, newCommit.sha)
 };
 
