@@ -5,9 +5,10 @@
 This is a [github action](https://docs.github.com/en/actions) for those who uses [Wakatime](https://wakatime.com/dashboard) to track their coding activity. 
 You can add the stats from wakatime in your github profile's README or any other repository.
 
-Here's an example of my coding activity in last one week:  
+###### Here's an example of my coding activity in last one week:
 
-<img src="https://github.com/tariksahni/tariksahni/blob/master/codeStats.svg" alt="My Coding Activity/>
+<img src="https://github.com/tariksahni/tariksahni/blob/master/codeStats.svg" alt="My Coding Activity"/>
+
 
 ### Usage
 1. Fetch your WakaTime API Key. Available from your [WakaTime](https://wakatime.com) account settings. 

@@ -8,12 +8,13 @@ const dom = new JSDOM(`<!DOCTYPE html><body></body>`);
 let body = d3.select(dom.window.document.querySelector("body"));
 let svg = body.append('svg').attr('xmlns', 'http://www.w3.org/2000/svg');
 
-const generateStatsSVG  = (statsResponse) => {
+const generateStatsSVG  = (statsResponse, duration) => {
     const statsData = getDesiredStats(statsResponse);
     const numberOfSamples = statsData.length;
     const margin = 20;
     const width = (numberOfSamples * 125) - 2 * margin;
     const height = 300 - 2 * margin;
+    const paddingToGraph = duration === 30 ? 4 : 1;
     svg.attr('width', (numberOfSamples * 125)).attr('height', 315);
     // Set the margins
     const chart = svg.append('g')
@@ -39,7 +40,7 @@ const generateStatsSVG  = (statsResponse) => {
     // Set the Y Axis
     const yAxis = d3.scaleLinear()
         .range([height, 0])
-        .domain([0, d3.max(statsData, (s) => s.value) + 1]);
+        .domain([0, d3.max(statsData, (s) => s.value) + paddingToGraph]);
 
     // const makeYLines = () => d3.axisLeft()
     //     .scale(yAxis);
