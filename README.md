@@ -1,6 +1,6 @@
 # CODING STATS WAKATIME
 ![LICENSE](https://img.shields.io/github/license/tariksahni/coding-stats-wakatime?style=flat)
-![RELEASE](https://img.shields.io/github/v/release/tariksahni/coding-stats-wakatime?color=green&styleflat)
+![RELEASE](https://img.shields.io/github/v/release/tariksahni/coding-stats-wakatime?color=green)
 ![ACTIVITY](https://img.shields.io/github/commit-activity/y/tariksahni/coding-stats-wakatime?color=green)
 
 
