@@ -10,7 +10,6 @@ let svg = body.append('svg').attr('xmlns', 'http://www.w3.org/2000/svg');
 
 const generateStatsSVG  = (statsResponse) => {
     const statsData = getDesiredStats(statsResponse);
-    console.log(statsData);
     const numberOfSamples = statsData.length;
     const margin = 20;
     const width = (numberOfSamples * 125) - 2 * margin;
