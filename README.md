@@ -36,9 +36,12 @@ Here's an example of my coding activity in last one week:
           - uses: tariksahni/coding-stats-wakatime@v1.0.0
             with:
               WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
+              SHOW_MONTHLY: true
               GITHUB_TOKEN: ${{ github.token }}
               GITHUB_ACTION: ${{ github.action }}
     ```
+   Note: You can chose the duration of your activity from monthly(default) to weekly. For weekly set `SHOW_MONTHLY: false`. 
+   
 6. The workflow will run at 10AM IST everyday or you can force run it by going to Action tab. Or you can add following lines under `on:` to run with every push. Search for 12 AM UTC to find equivalent time in your time zone. 
     ```yml
     on:

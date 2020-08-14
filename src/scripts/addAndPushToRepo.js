@@ -4,9 +4,7 @@ import glob from 'globby';
 import path from 'path';
 import { readFile } from 'fs-extra';
 
-// const [owner, repo] = process.env.GITHUB_REPOSITORY.split("/");
-const owner = 'tariksahni';
-const repo = 'tariksahni';
+const [owner, repo] = process.env.GITHUB_REPOSITORY.split("/");
 
 const getCurrentCommit = async (
     octo,
@@ -38,14 +36,12 @@ const createBlobForFile = (octo, owner, repo) => async (
     filePath
 ) => {
     const content = await getFileAsUTF8(filePath);
-    console.log("aaua", owner, repo, octo.git.createBlob);
     const blobData = await octo.git.createBlob({
         owner,
         repo,
         content,
         encoding: 'utf-8',
     });
-    console.log("ye aaya", blobData);
     return blobData.data
 };
 
@@ -63,14 +59,12 @@ const createNewTree = async (
         type: `blob`,
         sha,
     }));
-    console.log("tree object", tree);
     const responseFromCreateTree = await octo.git.createTree({
         owner,
         repo,
         tree,
         base_tree: parentTreeSha,
     });
-    console.log("responseFromCreateTree", responseFromCreateTree);
     return responseFromCreateTree.data
 };
 
@@ -114,9 +108,7 @@ const uploadToRepo = async (
     const currentCommit = await getCurrentCommit(octo, owner, repo, branch);
     const filesPaths = await glob(imagePath);
     const filesBlobs = await Promise.all(filesPaths.map(createBlobForFile(octo, owner, repo)));
-    console.log("filesBlobs", filesBlobs);
     const pathsForBlobs = filesPaths.map(fullPath => path.relative(imagePath, fullPath));
-    console.log("pathsForBlobs", pathsForBlobs, currentCommit);
     const newTree = await createNewTree(
         octo,
         owner,
@@ -125,7 +117,6 @@ const uploadToRepo = async (
         pathsForBlobs,
         currentCommit.treeSha
     );
-    console.log("aaya", newTree);
     const commitMessage = 'Updated your coding stats :rocket: ';
     const newCommit = await createNewCommit(
         octo,
@@ -135,7 +126,6 @@ const uploadToRepo = async (
         newTree.sha,
         currentCommit.commitSha
     );
-    console.log("new commit", newCommit);
     await setBranchToCommit(octo, owner, repo, branch, newCommit.sha)
 };
 
