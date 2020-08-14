@@ -39,7 +39,7 @@ const generateStatsSVG  = (statsResponse) => {
     // Set the Y Axis
     const yAxis = d3.scaleLinear()
         .range([height, 0])
-        .domain([0, d3.max(statsData, (s) => s.value) + 2]);
+        .domain([0, d3.max(statsData, (s) => s.value) + 1]);
 
     // const makeYLines = () => d3.axisLeft()
     //     .scale(yAxis);
