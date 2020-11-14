@@ -1,4 +1,4 @@
-import initProcess from './src/initProcess';
+import {initProcess} from './src/initProcess';
 
 initProcess();
 
